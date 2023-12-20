@@ -1,4 +1,15 @@
+import { useEffect } from "react"
+import { client } from "./helpers/client"
+
 function App() {
+  const getData = () => {
+    return client.getResults.query({ query: "test" })
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <>
       <h1 className="text-2xl text-red-900">Hello, world!</h1>
