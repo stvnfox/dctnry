@@ -14,10 +14,10 @@ function App() {
     <>
       <h1 className="text-2xl text-red-900">Hello, world!</h1>
       <h2 className="italic">Start editing to see some magic happen!</h2>
-      <button onClick={search}>Search for hello</button>
+      <button type="button" onClick={search}>Search for hello</button>
       <ul>
-        {results.map((result, index) => (
-          <li key={index}>{result.word}</li>
+        {results.map((result) => (
+          <li key={result.word}>{result.word}</li>
         ))}
       </ul>
     </>
