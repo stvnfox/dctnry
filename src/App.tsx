@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react"
-import { SearchBar } from "./components/SearchBar";
 import { DictionaryService } from "./services/dictionary.service";
 import { DictionaryQuery, DictionaryResult } from "./store/dictionary.store";
+import { ResultItem } from "./components/ResultItem";
+import { SearchBar } from "./components/SearchBar";
 
 export const App = () => {
   const query = useStore(DictionaryQuery);
@@ -29,16 +30,12 @@ export const App = () => {
 			<SearchBar/>
       <div className="mt-4">
         {
-          results.length ? (
+          results.length ? 
             results.map((result: DictionaryResult, index: number) => (
-              <div className="flex flex-col" key={`result-${index}`}>
-                <h2 className="text-2xl font-bold">{result.word}</h2>
-                <pre className="text-lg">{result.sourceUrls}</pre>
-              </div>
+              <ResultItem key={`dctnry-result-${index}`} result={result}/>
             ))
-          ) : (
-            <p className="text-lg">No results found.</p>
-          )
+          :
+          <p className="text-lg">No results found.</p>
         }
       </div>
 		</section>
