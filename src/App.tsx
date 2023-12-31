@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
+import { useStore } from "@nanostores/react"
 import { SearchBar } from "./components/SearchBar";
 import { DictionaryService } from "./services/dictionary.service";
+import { DictionaryQuery, DictionaryResult } from "./store/dictionary.store";
 
-function App() {
-  const [query, setQuery] = useState("")
-  const [results, setResults] = useState([])
-  
-  const getResults = (input: string) => {
-    setQuery(input)
-  }
-
-  const resetResults = () => {
-    setResults([])
-  }
+export const App = () => {
+  const query = useStore(DictionaryQuery);
+  const [results, setResults] = useState([] as DictionaryResult[])
 
   useEffect(() => {
     const getResults = setTimeout(async () => {
@@ -32,14 +26,14 @@ function App() {
 
 	return (
 		<section className="container">
-			<SearchBar onSearch={(input: string) => getResults(input)} clearQuery={resetResults}/>
+			<SearchBar/>
       <div className="mt-4">
         {
           results.length ? (
-            results.map((result: any, index: number) => (
+            results.map((result: DictionaryResult, index: number) => (
               <div className="flex flex-col" key={`result-${index}`}>
                 <h2 className="text-2xl font-bold">{result.word}</h2>
-                <p className="text-lg">{result.definition}</p>
+                <pre className="text-lg">{result.sourceUrls}</pre>
               </div>
             ))
           ) : (
@@ -50,5 +44,3 @@ function App() {
 		</section>
 	);
 }
-
-export default App;
