@@ -19,7 +19,7 @@ interface DictionaryMeaning {
     synonyms: string[]
 }
 
-interface DictionaryPhonetic {
+export interface DictionaryPhonetic {
     audio: string
     license: DictionaryLicense
     sourceUrl: string
@@ -33,6 +33,7 @@ export interface DictionaryResult {
     phonetics: DictionaryPhonetic[]
     sourceUrls: string[]
     word: string
+    id?: string
 }
 
 export const DictionaryQuery = atom<string>('');
