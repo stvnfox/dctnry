@@ -12,7 +12,7 @@ interface DictionaryMeaningDefinitions {
     antonyms: string[]
 }
 
-interface DictionaryMeaning {
+export interface DictionaryMeaning {
     antonyms: string[]
     definitions: DictionaryMeaningDefinitions
     partOfSpeech: string
