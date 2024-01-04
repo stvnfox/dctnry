@@ -6,7 +6,7 @@ export const ResultItem = ({ result }: { result: DictionaryResult }) => {
 
 	return (
 		<section>
-			<div className="flex items-center gap-4">
+			<div className="flex items-center justify-between gap-4 mb-8">
 				<div>
 					<h2 className="text-2xl font-bold">{result.word}</h2>
 					<p className="text-lg">{result.phonetic}</p>
