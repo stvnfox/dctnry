@@ -45,9 +45,9 @@ export const App = () => {
 	}, [query]);
 
 	return (
-		<section className="container">
+		<section className="container my-8">
 			<SearchBar />
-			<div className="mt-4">
+			<div className="mt-8">
 				{resultsWithId.length ? (
 					resultsWithId.map((result: DictionaryResult) => (
 						<ResultItem key={result.id} result={result} />
