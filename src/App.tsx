@@ -3,12 +3,14 @@ import { useStore } from "@nanostores/react";
 import { createGuid } from "./helpers/guid";
 import { DictionaryService } from "./services/dictionary.service";
 import { DictionaryQuery, DictionaryResult } from "./store/dictionary.store";
+import { NoResults } from "./components/NoResults";
 import { ResultItem } from "./components/ResultItem";
 import { SearchBar } from "./components/SearchBar";
 
 export const App = () => {
 	const query = useStore(DictionaryQuery);
 	const [results, setResults] = useState([] as DictionaryResult[]);
+	const [hasSearched, setHasSearchedValue] = useState(false);
 
 	const resultsWithId = results.length
 		? results.map((result: DictionaryResult) => {
@@ -21,15 +23,22 @@ export const App = () => {
 
 	useEffect(() => {
 		const getResults = setTimeout(async () => {
-			if (query === "") return;
+			if (query === "") {
+				setResults([]);
+				setHasSearchedValue(false);
+				return;
+			}
 
-			const response = await DictionaryService.GetResults(query);
+			const response: DictionaryResult[] =
+				await DictionaryService.GetResults(query);
 
 			if (response.length === 0) {
 				setResults([]);
 			} else {
 				setResults(response);
 			}
+
+			setHasSearchedValue(true);
 		}, 500);
 
 		return () => clearTimeout(getResults);
@@ -44,7 +53,7 @@ export const App = () => {
 						<ResultItem key={result.id} result={result} />
 					))
 				) : (
-					<p className="text-lg">No results found.</p>
+					<NoResults searched={hasSearched} />
 				)}
 			</div>
 		</section>
