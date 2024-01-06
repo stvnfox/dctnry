@@ -1,4 +1,5 @@
 import { DictionaryMeaning } from "../store/dictionary.store";
+import { ResultItemMeaningListItem } from "./ResultItemMeaningListItem";
 
 export const ResultItemMeaningNoun = ({
 	meaning,
@@ -11,7 +12,15 @@ export const ResultItemMeaningNoun = ({
 				</h3>
 			</div>
 			<h4 className="text-neutral-500 mb-3">Meaning</h4>
-			<div>{JSON.stringify(meaning)}</div>
+			<ul className="list-disc marker:text-purple-600 ml-8">
+				{meaning.definitions.map((definition, index) => (
+					<ResultItemMeaningListItem
+						key={`definition-noun-${index}`}
+						meaning={definition.definition}
+						example={definition.example}
+					/>
+				))}
+			</ul>
 		</section>
 	);
 };

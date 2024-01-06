@@ -10,11 +10,12 @@ interface DictionaryMeaningDefinitions {
     definition: string
     synonyms: string[]
     antonyms: string[]
+    example: string
 }
 
 export interface DictionaryMeaning {
     antonyms: string[]
-    definitions: DictionaryMeaningDefinitions
+    definitions: DictionaryMeaningDefinitions[]
     partOfSpeech: string
     synonyms: string[]
 }
