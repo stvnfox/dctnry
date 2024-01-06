@@ -3,6 +3,7 @@ import { useStore } from "@nanostores/react";
 import { createGuid } from "./helpers/guid";
 import { DictionaryService } from "./services/dictionary.service";
 import { DictionaryQuery, DictionaryResult } from "./store/dictionary.store";
+import { NavigationComponent } from "./components/NavigationComponent";
 import { NoResults } from "./components/NoResults";
 import { ResultItem } from "./components/ResultItem";
 import { SearchBar } from "./components/SearchBar";
@@ -46,6 +47,7 @@ export const App = () => {
 
 	return (
 		<section className="w-5/6 lg:w-3/5 mx-auto my-8">
+			<NavigationComponent />
 			<SearchBar />
 			<div className="mt-8">
 				{resultsWithId.length ? (
