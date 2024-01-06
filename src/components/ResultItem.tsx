@@ -19,7 +19,7 @@ export const ResultItem = ({ result }: { result: DictionaryResult }) => {
 	);
 
 	return (
-		<section>
+		<section className="mb-16">
 			<div className="flex items-center justify-between gap-4 mb-8">
 				<ResultItemWordInfo word={result.word} phonetic={result.phonetic} />
 				{audioItem && <ResultItemAudioButton id={result.id} item={audioItem} />}

@@ -45,7 +45,7 @@ export const App = () => {
 	}, [query]);
 
 	return (
-		<section className="container w-3/5 mx-auto my-8">
+		<section className="w-5/6 lg:w-3/5 mx-auto my-8">
 			<SearchBar />
 			<div className="mt-8">
 				{resultsWithId.length ? (
