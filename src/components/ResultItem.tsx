@@ -2,6 +2,7 @@ import { DictionaryResult } from "../store/dictionary.store";
 import { ResultItemAudioButton } from "./ResultItemAudioButton";
 import { ResultItemWordInfo } from "./ResultItemWordInfo";
 import { ResultItemMeaning } from "./ResultItemMeaning";
+import { ResultItemSources } from "./ResultItemSources";
 
 enum MeaningType {
 	Noun = "noun",
@@ -25,6 +26,7 @@ export const ResultItem = ({ result }: { result: DictionaryResult }) => {
 			</div>
 			{nounMeaning && <ResultItemMeaning title="Noun" meaning={nounMeaning} />}
 			{verbMeaning && <ResultItemMeaning title="Verb" meaning={verbMeaning} />}
+			<ResultItemSources sources={result.sourceUrls} />
 		</section>
 	);
 };
