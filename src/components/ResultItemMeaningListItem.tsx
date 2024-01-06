@@ -5,7 +5,7 @@ export const ResultItemMeaningListItem = ({
 	return (
 		<li className="text-neutral-800 mb-3 ml-2">
 			{meaning}
-			<p className="text-neutral-500 mt-2">{example}</p>
+			{example && <p className="text-neutral-400 mt-2">"{example}"</p>}
 		</li>
 	);
 };

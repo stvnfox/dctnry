@@ -2,14 +2,15 @@ import { DictionaryMeaning } from "../store/dictionary.store";
 import { ResultItemMeaningListItem } from "./ResultItemMeaningListItem";
 import { ResultItemSynonyms } from "./ResultItemSynonyms";
 
-export const ResultItemMeaningNoun = ({
+export const ResultItemMeaning = ({
 	meaning,
-}: { meaning: DictionaryMeaning }) => {
+	title,
+}: { meaning: DictionaryMeaning; title: string }) => {
 	return (
 		<section className="mb-10">
 			<div className="relative w-full after:absolute after:left-0 after:bottom-1/2 after:w-full after:h-[2px] after:-translate-y-[calc(50%-2px)] after:z-[-1] after:bg-purple-100 mb-8">
 				<h3 className="bg-white text-neutral-800 text-xl font-bold lowercase italic w-fit pr-6">
-					Noun
+					{title}
 				</h3>
 			</div>
 			<h4 className="text-neutral-400 mb-3">Meaning</h4>
@@ -22,7 +23,9 @@ export const ResultItemMeaningNoun = ({
 					/>
 				))}
 			</ul>
-			<ResultItemSynonyms synonyms={meaning.synonyms} />
+			{meaning.synonyms.length > 0 && (
+				<ResultItemSynonyms synonyms={meaning.synonyms} />
+			)}
 		</section>
 	);
 };

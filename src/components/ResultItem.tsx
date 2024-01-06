@@ -1,12 +1,20 @@
 import { DictionaryResult } from "../store/dictionary.store";
 import { ResultItemAudioButton } from "./ResultItemAudioButton";
 import { ResultItemWordInfo } from "./ResultItemWordInfo";
-import { ResultItemMeaningNoun } from "./ResultItemMeaningNoun";
+import { ResultItemMeaning } from "./ResultItemMeaning";
+
+enum MeaningType {
+	Noun = "noun",
+	Verb = "verb",
+}
 
 export const ResultItem = ({ result }: { result: DictionaryResult }) => {
 	const audioItem = result.phonetics.find((phonetic) => phonetic.audio !== "");
 	const nounMeaning = result.meanings.find(
-		(meaning) => meaning.partOfSpeech === "noun",
+		(meaning) => meaning.partOfSpeech === MeaningType.Noun,
+	);
+	const verbMeaning = result.meanings.find(
+		(meaning) => meaning.partOfSpeech === MeaningType.Verb,
 	);
 
 	return (
@@ -15,7 +23,8 @@ export const ResultItem = ({ result }: { result: DictionaryResult }) => {
 				<ResultItemWordInfo word={result.word} phonetic={result.phonetic} />
 				{audioItem && <ResultItemAudioButton id={result.id} item={audioItem} />}
 			</div>
-			{nounMeaning && <ResultItemMeaningNoun meaning={nounMeaning} />}
+			{nounMeaning && <ResultItemMeaning title="Noun" meaning={nounMeaning} />}
+			{verbMeaning && <ResultItemMeaning title="Verb" meaning={verbMeaning} />}
 		</section>
 	);
 };
