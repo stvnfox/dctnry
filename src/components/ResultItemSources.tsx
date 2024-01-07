@@ -8,7 +8,7 @@ export const ResultItemSources = ({ sources }: { sources: string[] }) => {
 					href={source}
 					target="_blank"
 					rel="noreferrer noopener"
-					className="group flex items-center gap-2 text-xs text-neutral-600 underline hover:no-underline"
+					className="group flex items-center gap-2 text-xs text-neutral-600 dark:text-neutral-200 underline hover:no-underline transition-colors"
 				>
 					{source}
 					<svg

@@ -46,17 +46,19 @@ export const App = () => {
 	}, [query]);
 
 	return (
-		<section className="w-5/6 lg:w-3/5 mx-auto my-8">
-			<NavigationComponent />
-			<SearchBar />
-			<div className="mt-8">
-				{resultsWithId.length ? (
-					resultsWithId.map((result: DictionaryResult) => (
-						<ResultItem key={result.id} result={result} />
-					))
-				) : (
-					<NoResults searched={hasSearched} />
-				)}
+		<section className="dark:bg-neutral-900 min-h-screen w-screen transition-colors">
+			<div className="w-5/6 lg:w-3/5 mx-auto py-8">
+				<NavigationComponent />
+				<SearchBar />
+				<div className="mt-8">
+					{resultsWithId.length ? (
+						resultsWithId.map((result: DictionaryResult) => (
+							<ResultItem key={result.id} result={result} />
+						))
+					) : (
+						<NoResults searched={hasSearched} />
+					)}
+				</div>
 			</div>
 		</section>
 	);

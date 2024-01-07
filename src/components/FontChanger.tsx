@@ -19,7 +19,7 @@ export const FontChanger = () => {
 
 	return (
 		<select
-			className="w-32 border-none focus:ring-purple-600 rounded-lg"
+			className="border-none bg-white dark:bg-neutral-900 dark:text-white focus:ring-purple-600 rounded-lg w-32 transition-colors"
 			name="font-changer"
 			onChange={setFont}
 		>

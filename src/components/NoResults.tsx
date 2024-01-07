@@ -1,6 +1,6 @@
 export const NoResults = ({ searched }: { searched: boolean }) => {
 	return (
-		<div className="text-center">
+		<div className="text-center dark:text-white transition-colors">
 			{searched ? (
 				<p className="text-lg">No results found</p>
 			) : (

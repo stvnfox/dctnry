@@ -8,8 +8,8 @@ export const ResultItemMeaning = ({
 }: { meaning: DictionaryMeaning; title: string }) => {
 	return (
 		<section className="mb-10">
-			<div className="relative w-full after:absolute after:left-0 after:bottom-1/2 after:w-full after:h-[2px] after:-translate-y-[calc(50%-2px)] after:z-[-1] after:bg-purple-100 mb-8">
-				<h3 className="bg-white text-neutral-800 text-xl font-bold lowercase italic w-fit pr-6">
+			<div className="relative w-full after:absolute after:left-0 after:bottom-1/2 after:w-full after:h-[2px] after:-translate-y-[calc(50%-2px)] after:z-[-1] after:bg-purple-100 dark:after:bg-white mb-8">
+				<h3 className="bg-white dark:bg-neutral-900 text-neutral-800 dark:text-white text-xl font-bold lowercase italic w-fit pr-6 transition-colors">
 					{title}
 				</h3>
 			</div>
