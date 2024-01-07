@@ -10,6 +10,11 @@ export default {
     container: {
       center: true
     },
+    fontFamily: {
+      sans: ['Open Sans', 'sans-serif'],
+      serif: ['Playfair Display', 'serif'],
+      mono: ['Inconsolata', 'monospace'],
+    },
     extend: {},
   },
   plugins: [

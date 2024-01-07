@@ -1,6 +1,7 @@
 enum FontStyle {
 	Serif = "serif",
 	Sans = "sans",
+	Mono = "mono",
 }
 
 export const FontChanger = () => {
@@ -8,13 +9,23 @@ export const FontChanger = () => {
 		const chosenFont = event.target.value;
 		const body = document.body;
 
-		if (body.classList.contains(`font-${FontStyle.Serif}`)) {
-			body.classList.remove(`font-${FontStyle.Serif}`);
-		} else {
-			body.classList.remove(`font-${FontStyle.Sans}`);
+		switch (chosenFont) {
+			case FontStyle.Serif:
+				body.classList.remove(`font-${FontStyle.Sans}`);
+				body.classList.remove(`font-${FontStyle.Mono}`);
+				body.classList.add("font-serif");
+				break;
+			case FontStyle.Sans:
+				body.classList.remove(`font-${FontStyle.Serif}`);
+				body.classList.remove(`font-${FontStyle.Mono}`);
+				body.classList.add("font-sans");
+				break;
+			case FontStyle.Mono:
+				body.classList.remove(`font-${FontStyle.Serif}`);
+				body.classList.remove(`font-${FontStyle.Sans}`);
+				body.classList.add("font-mono");
+				break;
 		}
-
-		body.classList.add(`font-${chosenFont}`);
 	};
 
 	return (
@@ -24,7 +35,8 @@ export const FontChanger = () => {
 			onChange={setFont}
 		>
 			<option value="serif">Serif</option>
-			<option value="sans">Sans-serif</option>
+			<option value="sans">Sans</option>
+			<option value="mono">Mono</option>
 		</select>
 	);
 };
