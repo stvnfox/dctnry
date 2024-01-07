@@ -20,7 +20,7 @@ export const SearchBar = () => {
 			<input
 				type="text"
 				value={model}
-				className="autofill:bg-neutral-100 p-2 w-full bg-neutral-100 rounded-md focus:outline-none"
+				className="autofill:bg-neutral-100 border-none focus:ring-0 p-2 w-full bg-neutral-100 rounded-md focus:outline-none"
 				name="dctnry-search-bar"
 				id="dctnry-search-bar"
 				onChange={handleInputChange}
