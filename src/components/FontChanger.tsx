@@ -30,7 +30,7 @@ export const FontChanger = () => {
 
 	return (
 		<select
-			className="border-none bg-white dark:bg-neutral-900 dark:text-white focus:ring-purple-600 rounded-lg w-32 transition-colors"
+			className="border-none bg-white dark:bg-neutral-900 dark:text-white focus:ring-purple-600 rounded-lg w-24 transition-colors"
 			name="font-changer"
 			onChange={setFont}
 		>

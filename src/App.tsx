@@ -46,7 +46,7 @@ export const App = () => {
 	}, [query]);
 
 	return (
-		<section className="dark:bg-neutral-900 min-h-screen w-screen transition-colors">
+		<section className="dark:bg-neutral-900 min-h-screen transition-colors">
 			<div className="w-5/6 lg:w-3/5 mx-auto py-8">
 				<NavigationComponent />
 				<SearchBar />
