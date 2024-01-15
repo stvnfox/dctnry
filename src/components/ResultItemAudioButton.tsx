@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MutableRefObject, useRef, useState } from "react";
 import { DictionaryPhonetic } from "../store/dictionary.store";
 
 export const ResultItemAudioButton = ({
@@ -6,10 +6,11 @@ export const ResultItemAudioButton = ({
 	item,
 }: { id: string | undefined; item: DictionaryPhonetic }) => {
 	const [isPlaying, setIsPlaying] = useState(false);
+	const audioElement = useRef(null as null | HTMLAudioElement);
 
-	const checkIfPlaying = (element: HTMLAudioElement) => {
+	const checkIfPlaying = (element: MutableRefObject<HTMLAudioElement | null> | null) => {
 		const interval = setInterval(() => {
-			if (!element.paused) {
+			if (element && element.current && !element.current.paused) {
 				setIsPlaying(true);
 			} else {
 				setIsPlaying(false);
@@ -21,12 +22,10 @@ export const ResultItemAudioButton = ({
 	const togglePlay = (id: string | undefined) => {
 		if (!id) return;
 
-		const audioElement = document.getElementById(id) as HTMLAudioElement;
-
 		if (isPlaying) {
-			audioElement.pause();
+			audioElement.current?.pause();
 		} else {
-			audioElement.play();
+			audioElement.current?.play();
 		}
 
 		checkIfPlaying(audioElement);
@@ -34,7 +33,7 @@ export const ResultItemAudioButton = ({
 
 	return (
 		<div>
-			<audio id={id} src={item.audio}>
+			<audio ref={audioElement} src={item.audio}>
 				<track kind="captions" />
 			</audio>
 			<button
